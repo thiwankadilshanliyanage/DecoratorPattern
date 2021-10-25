@@ -14,18 +14,25 @@ public class Test {
 //        System.out.println(cs.getPrice()); 
 
           IceCream i1 = new VanillaIceCream();
-                   i1 = new ChocolateSauce(i1);
+                   i1 = new ChocolateSauce(i1);//chocolate sause IS-A Iceceam
+                   System.out.println(i1.getDes());
                    System.out.println(i1.getPrice());
     }
     
 }
 abstract class IceCream{//Component
     public abstract double getPrice();
+    public abstract String getDes();
+    
 }
 class VanillaIceCream extends IceCream{//SubComponent (IS-A)
     @Override
     public double getPrice(){
         return 50;
+    }
+    @Override
+    public String getDes(){
+        return "Vanila Icecream";
     }
 }
 abstract class IceCreamDecorator extends IceCream{//Decorator (IS-A)
@@ -38,6 +45,10 @@ abstract class IceCreamDecorator extends IceCream{//Decorator (IS-A)
     public double getPrice(){
         return iceCream.getPrice();
     }
+    @Override
+    public String getDes(){
+        return iceCream.getDes();
+    }
     
 }
  class ChocolateSauce extends IceCreamDecorator{//SubDecorator (IS-A)
@@ -49,6 +60,10 @@ abstract class IceCreamDecorator extends IceCream{//Decorator (IS-A)
     @Override
     public double getPrice() {
         return super.getPrice()+10;
+    }
+     @Override
+    public String getDes(){
+        return super.getDes()+" With Chocolate Sauce" ;
     }
     
 }
