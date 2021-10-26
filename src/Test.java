@@ -20,12 +20,12 @@ public class Test {
     }
     
 }
-abstract class IceCream{//Component
+interface  IceCream{//Component
     public abstract double getPrice();
     public abstract String getDes();
     
 }
-class VanillaIceCream extends IceCream{//SubComponent (IS-A)
+class VanillaIceCream implements IceCream{//SubComponent (IS-A)
     @Override
     public double getPrice(){
         return 50;
@@ -35,8 +35,8 @@ class VanillaIceCream extends IceCream{//SubComponent (IS-A)
         return "Vanila Icecream";
     }
 }
-abstract class IceCreamDecorator extends IceCream{//Decorator (IS-A)
-    IceCream iceCream;    //HAS_A
+abstract class IceCreamDecorator implements IceCream{//Decorator (IS-A)
+    private final IceCream iceCream;    //HAS_A
 
     public IceCreamDecorator(IceCream iceCream) {//Decorator must has a icecream therefor we create constructor in decorator class (Because before add chocolate sause must has a icecream)
         this.iceCream = iceCream;
